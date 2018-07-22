@@ -71,3 +71,6 @@ eval $(thefuck --alias)
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 [[ -f /home/martin/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /home/martin/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+
+# Load the latest tmux session
+tmux attach
