@@ -10,5 +10,5 @@ cd configs
 ```
 
 After restarting the terminal, tmux should automatically load up.
-Press `prefix` + <kbd>I</kbd> to fetch all tmux plugins.
+Press <kbd>Ctrl</kbd>+<kbd>A</kbd> + <kbd>I</kbd> to fetch all tmux plugins.
 
