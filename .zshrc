@@ -1,7 +1,7 @@
 export TERM="xterm-256color"
 
 # Load tmux by default
-if [ "$TMUX" = "" ]; then tmux attach; fi
+if [ "$TMUX" = "" ]; then tmux attach || tmux new; fi
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
