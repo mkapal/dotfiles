@@ -25,12 +25,6 @@ POWERLEVEL9K_SHOW_CHANGESET=true
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
 
-# disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
-
-# disable colors in ls
-# export DISABLE_LS_COLORS="true"
-
 # disable autosetting terminal title.
 export DISABLE_AUTO_TITLE="true"
 
@@ -45,20 +39,6 @@ source $ZSH/oh-my-zsh.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# source /home/martin/.nvm/nvm.sh
-
-# autoload -U add-zsh-hook
-# load-nvmrc() {
-#  if [[ -f .nvmrc && -r .nvmrc ]]; then
-#    nvm use &> /dev/null
-#  elif [[ $(nvm version) != $(nvm version default)  ]]; then
-#    nvm use default &> /dev/null
-#  fi
-# }
-# add-zsh-hook chpwd load-nvmrc
-# load-nvmrc
-
-# Customize to your needs...
 unsetopt correct
 
 source $HOME/.aliases

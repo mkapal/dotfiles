@@ -1,10 +1,14 @@
 #!/bin/bash
 
 rm ~/.aliases
-cp ~/configs/.aliases ~/
-
 rm ~/.tmux.conf
-cp ~/configs/.tmux.conf ~/
-
+rm ~/.vimrc
+rm ~/.vim
 rm ~/.zshrc
-cp ~/configs/.zshrc ~/
+
+cp ~/configs/.aliases ~
+cp ~/configs/.tmux.conf ~
+mkdir ~/.vim
+cp -r ~/configs/.vim/* ~/.vim
+cp ~/configs/.vimrc ~
+cp ~/configs/.zshrc ~
