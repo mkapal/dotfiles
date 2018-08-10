@@ -1,6 +1,4 @@
 set termguicolors
-colorscheme darcula
-syntax on
 set hidden
 set number
 set relativenumber
@@ -15,25 +13,39 @@ set laststatus=0
 
 let g:nerdtree_tabs_open_on_console_startup=1
 let g:nerdtree_tabs_autofind=1
+let NERDTreeShowHidden=1
+
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'blueshirts/darcula'
+Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
+Plug 'tpope/vim-surround'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'alvan/vim-closetag'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
+
+colorscheme darcula
+syntax on
 
 let g:ale_fixers = {'javascript': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_linters_explicit = 1
+let g:SuperTabDefaultCompletionType = "context"
 
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 
