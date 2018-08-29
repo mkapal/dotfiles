@@ -4,15 +4,14 @@ set -euo pipefail
 source ./list
 ./delete
 
-echo "Restoring dotfiles"
+echo "Symlinking dotfiles"
 
 for root_file in "${root_files[@]}"; do
     echo "$root_file"
-    cp "$(pwd)/files/$root_file" "$HOME"
+    ln -sf "$(pwd)/files/$root_file" "$HOME/$root_file"
 done
 
 for root_directory in "${root_directories[@]}"; do
     echo "$root_directory"
-    mkdir "$HOME/$root_directory"
-    cp -a "$(pwd)/files/$root_directory/." "$HOME/$root_directory/"
+    ln -sf "$(pwd)/files/$root_directory"* "$HOME"
 done

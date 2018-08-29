@@ -1,5 +1,5 @@
 # Vim-plug
-.vim/plugged/
+files/.vim/plugged/
 
 # Swap
 [._]*.s[a-v][a-z]

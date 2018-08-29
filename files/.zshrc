@@ -41,7 +41,14 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 unsetopt correct
 
-source $HOME/.aliases
+# Custom aliases
+alias dcu='docker-compose up -d'
+alias dcub='docker-compose up -d --build'
+alias dcd='docker-compose down'
+alias dca='docker ps -a'
+alias drmex='docker rm $(docker ps -q -f status=exited)'
+alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
+alias dsex="docker start $(docker ps -a --filter 'status=exited' -q)"
 
 eval $(thefuck --alias)
 

@@ -1,0 +1,7 @@
+[core]
+excludesfile = ~/.gitignore
+autocrlf = input
+
+[user]
+name = Martin Kapal
+email = flamecze@gmail.com
