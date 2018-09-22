@@ -21,7 +21,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'blueshirts/darcula'
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'airblade/vim-gitgutter'

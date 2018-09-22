@@ -6,6 +6,15 @@ if [ "$TMUX" = "" ]; then tmux attach || tmux new; fi
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 
+export LANG="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 # if you want to use this, change your non-ascii font to Droid Sans Mono for Awesome
 # POWERLEVEL9K_MODE='awesome-patched'
 export ZSH_THEME="powerlevel9k/powerlevel9k"
