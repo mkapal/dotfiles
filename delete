@@ -10,7 +10,7 @@ for root_file in "${root_files[@]}"; do
     rm -rf "$HOME/$root_file"
 done
 
-for root_directory in "${root_directories[@]}"; do
-    echo "Deleting directory $root_directory"
-    rm -rf "$HOME/$root_directory"
-done
+#for root_directory in "${root_directories[@]}"; do
+#    echo "Deleting directory $root_directory"
+#    rm -rf "$HOME/$root_directory"
+#done

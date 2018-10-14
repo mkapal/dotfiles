@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export root_files=(
-    ".aliases"
     ".gitconfig"
     ".gitignore"
     ".tmux.conf"
