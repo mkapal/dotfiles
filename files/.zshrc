@@ -22,5 +22,5 @@ antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 antigen apply
 
-export PATH=/home/martin/shell-scripts/scripts:$PATH
+export PATH="$HOME/shell-scripts/scripts:$HOME/.yarn/bin:$PATH"
 
