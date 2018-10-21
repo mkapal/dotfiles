@@ -1,5 +1,5 @@
 *faceName: DejaVu Sans Mono Book
-*faceSize: 11
+*faceSize: 12
 *geometry: 120x40
 
 *loginshell: true
@@ -8,7 +8,7 @@
 *ScrollBar: false
 
 ! special
-*.foreground:   #a2a2a2
+*.foreground:   #eeeeee
 *.background:   #222222
 *.cursorColor:  #a2a2a2
 
