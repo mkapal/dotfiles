@@ -1,7 +1,7 @@
 export TERM="xterm-256color"
 
 # Load tmux by default
-#if [ "$TMUX" = "" ]; then tmux attach || tmux new; fi
+# if [ "$TMUX" = "" ]; then tmux attach || tmux new; fi
 
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
@@ -21,6 +21,7 @@ source ~/antigen.zsh
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
 antigen apply
 
 # History file configuration
