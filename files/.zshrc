@@ -1,7 +1,7 @@
 export TERM="xterm-256color"
 
 # Load tmux by default
-# if [ "$TMUX" = "" ]; then tmux attach || tmux new; fi
+if [ "$TMUX" = "" ]; then tmux attach || tmux new; fi
 
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
