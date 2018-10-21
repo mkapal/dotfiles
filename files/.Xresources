@@ -5,24 +5,42 @@
 *loginshell: true
 *savelines: 16384
 
-*.foreground: #F8F8F2
-*.background: #282A36
-*.color0:     #000000
-*.color8:     #4D4D4D
-*.color1:     #FF5555
-*.color9:     #FF6E67
-*.color2:     #50FA7B
-*.color10:    #5AF78E
-*.color3:     #F1FA8C
-*.color11:    #F4F99D
-*.color4:     #BD93F9
-*.color12:    #CAA9FA
-*.color5:     #FF79C6
-*.color13:    #FF92D0
-*.color6:     #8BE9FD
-*.color14:    #9AEDFE
-*.color7:     #BFBFBF
-*.color15:    #E6E6E6
+*ScrollBar: false
 
-xterm*rightScrollBar: true
-xterm*ScrollBar: true
+! special
+*.foreground:   #a2a2a2
+*.background:   #222222
+*.cursorColor:  #a2a2a2
+
+! black
+*.color0:       #555555
+*.color8:       #888888
+
+! red
+*.color1:       #9c3528
+*.color9:       #d64937
+
+! green
+*.color2:       #61bc3b
+*.color10:      #86df5d
+
+! yellow
+*.color3:       #f3b43a
+*.color11:      #fdd75a
+
+! blue
+*.color4:       #0d68a8
+*.color12:      #0f75bd
+
+! magenta
+*.color5:       #744560
+*.color13:      #9e5e83
+
+! cyan
+*.color6:       #288e9c
+*.color14:      #37c3d6
+
+! white
+*.color7:       #a2a2a2
+*.color15:      #f9f9f9
+
