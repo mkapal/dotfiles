@@ -20,6 +20,7 @@ fi
 source ~/antigen.zsh
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 # History file configuration
@@ -35,6 +36,10 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 export PATH="$HOME/shell-scripts/scripts:$(yarn global bin):$PATH"
 
