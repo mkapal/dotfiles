@@ -10,6 +10,8 @@ set updatetime=100
 set noshowmode
 set noruler
 set laststatus=0
+set timeoutlen=1000 ttimeoutlen=0
+set showcmd
 
 let g:nerdtree_tabs_open_on_console_startup=1
 let g:nerdtree_tabs_autofind=1
@@ -26,8 +28,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'ervandew/supertab'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-surround'
@@ -35,8 +37,12 @@ Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'alvan/vim-closetag'
 Plug 'jiangmiao/auto-pairs'
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
+
+let g:airline_theme='murmur'
 
 colorscheme darcula
 syntax on
@@ -45,7 +51,6 @@ let g:ale_fixers = {'javascript': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_linters_explicit = 1
-let g:SuperTabDefaultCompletionType = "context"
 
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 
@@ -61,7 +66,14 @@ au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
 au FileType c setl ofu=ccomplete#CompleteCpp
 au FileType css setl ofu=csscomplete#CompleteCSS
 
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+
+" Zoom the tmux runner pane
+map <Leader>vz :VimuxZoomRunner<CR>
+
+" vv to generate new vertical split
+nnoremap <silent> vv <C-w>v
+
 map <C-n> :NERDTreeToggle<CR>
-map <C-l> :bn<CR>
-map <C-h> :bp<CR>
 map <C-p> :FZF<CR>
