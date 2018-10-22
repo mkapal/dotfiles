@@ -2,6 +2,7 @@
 
 export root_files=(
     ".aliases"
+    ".config/termite/config"
     ".gitconfig"
     ".gitignore"
     ".tmux.conf"
