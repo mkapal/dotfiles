@@ -22,6 +22,7 @@ antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
 antigen apply
 
 # History file configuration
@@ -37,6 +38,10 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
+
+# History search based on prompt input
+bindkey ${terminfo[kcuu1]} history-substring-search-up
+bindkey ${terminfo[kcud1]} history-substring-search-down
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
