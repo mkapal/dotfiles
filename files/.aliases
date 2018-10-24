@@ -1,5 +1,15 @@
 alias ~='cd ~'
 
+# Git
+alias ga='git add'
+alias gaa='git add -a'
+alias gc='git commit -m'
+alias gcb='git checkout -b'
+alias gf='git fetch'
+alias gl='git pull'
+alias gp='git push'
+alias gs='tig status'
+
 # Docker
 alias dcu='docker-compose up -d'
 alias dcub='docker-compose up -d --build'
@@ -10,7 +20,6 @@ alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
 alias dsex="docker start $(docker ps -a --filter 'status=exited' -q)"
 
 alias zshrc='vim ~/.zshrc'
-alias lempls='ssh flame@lempls.com'
 
 alias l='ls -A1'
 alias la='ls -lAh'
