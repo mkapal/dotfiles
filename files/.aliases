@@ -1,4 +1,11 @@
 alias ~='cd ~'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
 
 # Git
 alias ga='git add'
@@ -19,8 +26,23 @@ alias drmex='docker rm $(docker ps -q -f status=exited)'
 alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
 alias dsex="docker start $(docker ps -a --filter 'status=exited' -q)"
 
+# Yarn
+alias ya='yarn add'
+alias yad='yarn add -D'
+alias yr='yarn remove'
+
 alias zshrc='vim ~/.zshrc'
 
 alias l='ls -A1'
 alias la='ls -lAh'
 ls --color=auto &> /dev/null && alias ls='ls --color=auto'
+
+update() {
+    sudo apt update
+    apt list --upgradable
+    sudo apt upgrade
+    sudo apt autoremove
+    vim +PlugUpgrade +PlugUpdate +PlugClean +qall
+    antigen update
+    ~/.tmux/plugins/tpm/bin/update_plugins all
+}
