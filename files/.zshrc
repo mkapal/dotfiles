@@ -1,7 +1,7 @@
 export TERM="xterm-256color"
 
 # Load tmux by default
-if [ "$TMUX" = "" ] && [ "$ZSH_TMUX_AUTOSTART" = true ]; then
+if [ "$TMUX" = "" ] && [ "$ZSH_TMUX_AUTOSTART" != false ]; then
     tmux attach || tmux new;
 fi
 
