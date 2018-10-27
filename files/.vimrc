@@ -19,6 +19,12 @@ let NERDTreeShowHidden=1
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'blueshirts/darcula'
