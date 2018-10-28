@@ -6,5 +6,6 @@ if [[ ! -e ~/.dotfiles ]]; then
 fi
 
 cd ~/.dotfiles/
+chmod +x ./install.sh
 echo Installing dotfiles...
 ./install.sh
