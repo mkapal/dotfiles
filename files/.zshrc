@@ -19,7 +19,7 @@ if [ -f ~/.aliases ]; then
 fi
 
 # Antigen plugins
-source ~/.dotfiles/antigen/antigen.zsh
+source ~/.dotfiles/files/antigen/antigen.zsh
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
