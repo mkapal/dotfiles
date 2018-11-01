@@ -38,31 +38,41 @@ cursor_shape = block
 #scrollbar = off
 
 [colors]
-foreground = rgb(239, 240, 235)
-foreground_bold = rgb(239, 240, 235)
-background = rgb(40, 42, 56)
+background = #282828
+foreground = #ebdbb2
+foreground_bold = #ebdbb2
 
-# If unset, will reverse foreground and background
-highlight = #2f2f2f
+# dark0 + gray
+color0 = #282828
+color8 = #928374
 
-# Colors from original hyper-snazzy theme
-color0 = rgb(40,42,56)
-color1 = rgb(255,92,87)
-color2 = rgb(90,247,142)
-color3 = rgb(243,249,157)
-color4 = rgb(87,199,255)
-color5 = rgb(255,106,193)
-color6 = rgb(154,237,254)
-color7 = rgb(241,241,240)
+# neutral_red + bright_red
+color1 = #cc241d
+color9 = #fb4934
 
-# Other default termite colors
-color9 = #dca3a3
-color10 = #c3bf9f
-color11 = #f0dfaf
-color12 = #94bff3
-color13 = #ec93d3
-color14 = #93e0e3
-color15 = #ffffff
+# neutral_green + bright_green
+color2 = #98971a
+color10 = #b8bb26
+
+# neutral_yellow + bright_yellow
+color3 = #d79921
+color11 = #fabd2f
+
+# neutral_blue + bright_blue
+color4 = #509da0
+color12 = #83a598
+
+# neutral_purple + bright_purple
+color5 = #b16286
+color13 = #d3869b
+
+# neutral_aqua + faded_aqua
+color6 = #689d6a
+color14 = #8ec07c
+
+# light4 + light1
+color7 = #a89984
+color15 = #ebdbb2
 
 [hints]
 #font = Monospace 12
