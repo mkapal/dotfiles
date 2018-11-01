@@ -6,6 +6,9 @@ alias ....='cd ../../../../'
 alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
+alias l='ls -A1'
+alias la='ls -lAh'
+ls --color=auto &> /dev/null && alias ls='ls --color=auto'
 
 # Git
 alias ga='git add'
@@ -30,12 +33,9 @@ alias dsex="docker start $(docker ps -a --filter 'status=exited' -q)"
 alias ya='yarn add'
 alias yad='yarn add -D'
 alias yr='yarn remove'
+alias yga='yarn global add'
 
 alias zshrc='vim ~/.zshrc'
-
-alias l='ls -A1'
-alias la='ls -lAh'
-ls --color=auto &> /dev/null && alias ls='ls --color=auto'
 
 update() {
     sudo apt update
@@ -45,4 +45,9 @@ update() {
     vim +PlugUpgrade +PlugUpdate +PlugClean +qall
     antigen update
     ~/.tmux/plugins/tpm/bin/update_plugins all
+}
+
+mkcd () {
+  mkdir "$1"
+  cd "$1"
 }
