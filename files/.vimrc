@@ -1,7 +1,7 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-let mapleader = ","
+let mapleader=","
 
 " If vim-plug is not installed,
 " download it automatically and install all plugins
@@ -19,21 +19,61 @@ Plug 'morhetz/gruvbox'
 
   set background=dark
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 
-  let g:airline_theme='murmur'
+  set laststatus=2
 
-Plug 'nathanaelkane/vim-indent-guides'
+  let g:lightline = {
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'fugitive', 'gitgutter', 'readonly', 'filename' ] ],
+        \ },
+        \ 'component_function': {
+        \   'filename': 'LightlineFilename',
+        \   'fugitive': 'LightLineFugitive',
+        \   'gitgutter': 'LightLineGitGutter'
+        \ }
+      \ }
+
+  function! LightlineFilename()
+    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+    let modified = &modified ? ' +' : ''
+    return filename . modified
+  endfunction
+
+  function! LightLineFugitive()
+    return exists('*fugitive#head') ? fugitive#head() : ''
+  endfunction
+
+  function! LightLineGitGutter()
+    if ! exists('*GitGutterGetHunkSummary')
+          \ || ! get(g:, 'gitgutter_enabled', 0)
+          \ || winwidth('.') <= 90
+      return ''
+    endif
+    let symbols = [
+          \ g:gitgutter_sign_added,
+          \ g:gitgutter_sign_modified,
+          \ g:gitgutter_sign_removed
+          \ ]
+    let hunks = GitGutterGetHunkSummary()
+    let ret = []
+    for i in [0, 1, 2]
+      if hunks[i] > 0
+        call add(ret, symbols[i] . hunks[i])
+      endif
+    endfor
+    return join(ret, ' ')
+  endfunction
 
 " File navigation =============================================================
 
 Plug 'scrooloose/nerdtree'
 
-  let NERDTreeShowHidden = 1       " Show hidden files
-  let NERDTreeMinimalUI = 1        " Do not show help text at the top
-  let NERDTreeDirArrows = 1
-  let NERDTreeAutoDeleteBuffer = 1 " Automatically delete file buffer after deleting it in NERDTree
+  let NERDTreeShowHidden=1       " Show hidden files
+  let NERDTreeMinimalUI=1        " Do not show help text at the top
+  let NERDTreeDirArrows=1
+  let NERDTreeAutoDeleteBuffer=1 " Automatically delete file buffer after deleting it in NERDTree
 
   " NERDTree toggle
   nnoremap <silent> <Leader>, :NERDTreeToggle<CR>
@@ -43,8 +83,6 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
-  "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
   " Fuzzy search all files including hidden and ignore files
   command! -bang -nargs=? -complete=dir HFiles
@@ -62,6 +100,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
+  nnoremap <silent> <leader>d :Gvdiff<CR>
+
 " Languages ===================================================================
 
 Plug 'othree/yajs.vim'
@@ -69,7 +109,16 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'mxw/vim-jsx'
 Plug 'HerringtonDarkholme/yats.vim'
 
-  let g:used_javascript_libs = 'react'
+  let g:used_javascript_libs='react'
+
+Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --tern-completer' }
+
+  " Go to definition of the symbol under cursor
+  nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+  " Rename symbol under cursor
+  nnoremap <expr> <leader>rr ':YcmCompleter RefactorRename ' . expand('<cword>')
+  let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Utility =====================================================================
 
