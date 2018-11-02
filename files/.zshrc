@@ -5,8 +5,6 @@ if [ "$TMUX" = "" ] && [ "$ZSH_TMUX_AUTOSTART" != false ]; then
     tmux attach || tmux new;
 fi
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
-
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
@@ -56,5 +54,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$(yarn global bin):$PATH"
 
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

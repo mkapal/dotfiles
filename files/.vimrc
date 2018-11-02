@@ -44,11 +44,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+  "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
   " Fuzzy search all files including hidden and ignore files
   command! -bang -nargs=? -complete=dir HFiles
-  \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0)
+  \ call fzf#vim#files(<q-args>, {'source': $FZF_DEFAULT_COMMAND}, <bang>0)
 
   nnoremap <silent> <C-f> :HFiles<CR>
 
