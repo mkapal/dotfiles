@@ -66,7 +66,19 @@ Plug 'itchyny/lightline.vim'
     return join(ret, ' ')
   endfunction
 
-" File navigation =============================================================
+Plug 'nathanaelkane/vim-indent-guides'
+
+  let g:indent_guides_default_mapping = 0
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_start_level = 2
+  let g:indent_guides_guide_size = 1
+  let g:indent_guides_exclude_filetypes = ['help', 'startify', 'man', 'rogue']
+  let g:indent_guides_auto_colors = 0
+
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#2D2D2D
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2D2D2D
+
+  " File navigation =============================================================
 
 Plug 'scrooloose/nerdtree'
 
@@ -76,7 +88,15 @@ Plug 'scrooloose/nerdtree'
   let NERDTreeAutoDeleteBuffer=1 " Automatically delete file buffer after deleting it in NERDTree
 
   " NERDTree toggle
-  nnoremap <silent> <Leader>, :NERDTreeToggle<CR>
+  nnoremap <silent> <Leader>, :call NERDTreeToggleAndFind()<CR>
+
+  function! NERDTreeToggleAndFind()
+    if (exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1)
+      execute ':NERDTreeClose'
+    else
+      execute ':NERDTreeFind'
+    endif
+  endfunction
 
   " Automatically close NERDTree when it's the last window open
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -118,6 +138,8 @@ Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --tern-completer' }
 
   " Rename symbol under cursor
   nnoremap <expr> <leader>rr ':YcmCompleter RefactorRename ' . expand('<cword>')
+
+  let g:ycm_key_invoke_completion = '<C-Space>'
   let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Utility =====================================================================
