@@ -28,7 +28,7 @@ let mapleader=";"
 map <Leader>vr :so ~/.vimrc<CR>
 " }}}
 " Colors {{{
-Plug 'morhetz/gruvbox'
+Plug 'kristijanhusak/vim-hybrid-material'
 set background=dark
 syntax enable
 if (has("termguicolors"))
@@ -168,17 +168,8 @@ Plug 'scrooloose/nerdtree'
 " }}}
 Plug 'kien/ctrlp.vim'
 " {{{
-  nnoremap <silent> <C-e> :CtrlPMRU<CR>
-  let g:ctrlp_user_command = ['ag %s -l --nocolor --hidden -g ""']
-" }}}
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" {{{
-  " Fuzzy search all files including hidden and ignore files
-  command! -bang -nargs=? -complete=dir HFiles
-  \ call fzf#vim#files(<q-args>, {'source': $FZF_DEFAULT_COMMAND}, <bang>0)
-
-
+  nnoremap <silent> <leader>e :CtrlPMRU<CR>
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 " }}}
 Plug 'christoomey/vim-tmux-navigator'
 " }}}
@@ -186,6 +177,12 @@ Plug 'christoomey/vim-tmux-navigator'
 set path+=**     " Allow searching in all subdirectories of the current tree
 set ignorecase   " Ignore case when searching...
 set smartcase    " ...unless we type a capital
+Plug 'mileszs/ack.vim'
+" {{{
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+  endif
+" }}}
 " }}}
 " Folding {{{
 set foldmethod=indent   " fold based on indent level
@@ -218,22 +215,27 @@ Plug 'tpope/vim-fugitive'
 " }}}
 " }}}
 " Languages {{{
-Plug 'othree/yajs.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'mxw/vim-jsx'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 " {{{
-  let g:used_javascript_libs='react'
+  " let g:used_javascript_libs='react'
 " }}}
 " Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --tern-completer' }
-" " {{{
+" {{{
+"  if !exists('g:ycm_semantic_triggers')
+"    let g:ycm_semantic_triggers = {}
+"  endif
+"   let g:ycm_semantic_triggers['typescript'] = ['.']
+"   let g:ycm_semantic_triggers['typescript.tsx'] = ['.']
+
 "   " Go to definition of the symbol under cursor
 "   nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 "   " Rename symbol under cursor
 "   nnoremap <expr> <leader>rr ':YcmCompleter RefactorRename ' . expand('<cword>')
 
-"   let g:ycm_key_invoke_completion = '<C-Space>'
+"   let g:ycm_key_invoke_completion = '<C-@>'
 "   let g:ycm_autoclose_preview_window_after_insertion = 1
 " " }}}
 Plug 'w0rp/ale'
@@ -247,6 +249,6 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
-colorscheme gruvbox
+colorscheme hybrid_reverse
 
 " vim:foldmethod=marker:foldlevel=0
