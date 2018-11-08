@@ -136,7 +136,7 @@ nnoremap k gk
 nnoremap gf :vertical wincmd f<CR>        " Open file under cursor in a new vertical split
 
 " Buffers
-nnoremap <silent>   <C-e> :Buffers<CR>
+" nnoremap <silent>   <C-e> :Buffers<CR>
 nnoremap <silent> <S-Tab> :bprevious<CR>
 nnoremap <silent>   <Tab> :bnext<CR>
 
@@ -149,18 +149,27 @@ Plug 'scrooloose/nerdtree'
   let NERDTreeIgnore = ['\.swp$']     " Ignore vim swap files
 
   " NERDTree toggle
-  nnoremap <silent> <c-p> :call NERDTreeToggleAndFind()<CR>
+  nnoremap <silent> <leader><leader> :call NERDTreeToggleAndFind()<CR>
 
   function! NERDTreeToggleAndFind()
     if (exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1)
       execute ':NERDTreeClose'
     else
-      execute ':NERDTreeFind'
+     if @% == ""
+        execute ':NERDTreeToggle'
+      else
+        execute ':NERDTreeFind'
+      endif
     endif
   endfunction
 
   " Automatically close NERDTree when it's the last window open
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" }}}
+Plug 'kien/ctrlp.vim'
+" {{{
+  nnoremap <silent> <C-e> :CtrlPMRU<CR>
+  let g:ctrlp_user_command = ['ag %s -l --nocolor --hidden -g ""']
 " }}}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -169,7 +178,6 @@ Plug 'junegunn/fzf.vim'
   command! -bang -nargs=? -complete=dir HFiles
   \ call fzf#vim#files(<q-args>, {'source': $FZF_DEFAULT_COMMAND}, <bang>0)
 
-  nnoremap <silent> <C-f> :HFiles<CR>
 
 " }}}
 Plug 'christoomey/vim-tmux-navigator'
@@ -191,6 +199,7 @@ Plug 'alvan/vim-closetag'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 " {{{
 " Move selection up/down
   nnoremap <A-j> :m .+1<CR>==
@@ -216,17 +225,17 @@ Plug 'HerringtonDarkholme/yats.vim'
 " {{{
   let g:used_javascript_libs='react'
 " }}}
-Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --tern-completer' }
-" {{{
-  " Go to definition of the symbol under cursor
-  nnoremap <leader>jd :YcmCompleter GoTo<CR>
+" Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --tern-completer' }
+" " {{{
+"   " Go to definition of the symbol under cursor
+"   nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
-  " Rename symbol under cursor
-  nnoremap <expr> <leader>rr ':YcmCompleter RefactorRename ' . expand('<cword>')
+"   " Rename symbol under cursor
+"   nnoremap <expr> <leader>rr ':YcmCompleter RefactorRename ' . expand('<cword>')
 
-  let g:ycm_key_invoke_completion = '<C-Space>'
-  let g:ycm_autoclose_preview_window_after_insertion = 1
-" }}}
+"   let g:ycm_key_invoke_completion = '<C-Space>'
+"   let g:ycm_autoclose_preview_window_after_insertion = 1
+" " }}}
 Plug 'w0rp/ale'
 " {{{
   let g:ale_fixers = {
