@@ -28,7 +28,7 @@ let mapleader=";"
 map <Leader>vr :so ~/.vimrc<CR>
 " }}}
 " Colors {{{
-Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'morhetz/gruvbox'
 set background=dark
 syntax enable
 if (has("termguicolors"))
@@ -249,6 +249,6 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
-colorscheme hybrid_reverse
+colorscheme gruvbox
 
 " vim:foldmethod=marker:foldlevel=0
