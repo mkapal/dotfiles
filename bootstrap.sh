@@ -2,7 +2,7 @@
 
 if [[ ! -e ~/.dotfiles ]]; then
   echo Cloning dotfiles...
-  git clone --recurse-submodules git@github.com:flamecze/dotfiles.git ~/.dotfiles > /dev/null 2>&1
+  git clone --recurse-submodules https://github.com/flamecze/dotfiles ~/.dotfiles > /dev/null 2>&1
 fi
 
 cd ~/.dotfiles/
