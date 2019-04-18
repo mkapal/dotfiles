@@ -17,7 +17,7 @@ set lazyredraw
 set scrolloff=3
 
 let mapleader=";"
-map <Leader>vr :so ~/.vimrc<CR>
+map <Leader>vr :so ~/.config/nvim/init.vim<CR>
 " }}}
 " Colors {{{
 Plug 'morhetz/gruvbox'
@@ -27,19 +27,32 @@ if (has("termguicolors"))
 set termguicolors
 endif
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 " {{{
   set laststatus=2
 
-  let g:lightline = {
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ],
-        \             [ 'fugitive', 'gitgutter', 'readonly', 'filename' ] ],
-        \ },
-        \ 'component_function': {
-        \   'filename': 'LightlineFilename',
-        \   'fugitive': 'LightLineFugitive',
-        \   'gitgutter': 'LightLineGitGutter'
-        \ }
+  let g:lightline = {}
+
+  let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+
+  let g:lightline.active = {
+      \  'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'gitgutter', 'readonly', 'filename' ] ],
+      \  'right': [ [ 'lineinfo' ],
+      \             [ 'percent' ],
+      \             [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ], 
+      \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ]
+      \ }
+
+  let g:lightline.component_function = {
+      \ 'filename': 'LightlineFilename',
+      \ 'fugitive': 'LightLineFugitive',
+      \ 'gitgutter': 'LightLineGitGutter'
       \ }
 
   function! LightlineFilename()
@@ -201,6 +214,7 @@ Plug 'tpope/vim-fugitive'
 " }}}
 " }}}
 " Languages {{{
+Plug 'HerringtonDarkholme/yats.vim'
 "Plug 'Quramy/tsuquyomi'
 "Plug 'leafgarland/typescript-vim'
 "Plug 'ianks/vim-tsx'
@@ -233,6 +247,7 @@ Plug 'w0rp/ale'
 " {{{
   let g:ale_fixers = {
   \   'javascript': ['prettier'],
+  \   'typescript': ['prettier'],
   \}
   let g:ale_fix_on_save = 1
 " }}}
