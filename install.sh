@@ -18,17 +18,3 @@ for file in .*; do
   ln -s ~/.dotfiles/files/$file ~/$file
   echo "Link created: ~/$file"
 done
-
-# Special case for termite config
-
-termite_config=.config/termite/config
-
-if [[ -e ~/$termite_config ]] && [[ -f ~/$termite_config ]]; then
-  mkdir -p ~/.dotfiles_backup/$now/.config/termite
-  mv ~/$termite_config ~/.dotfiles_backup/$now/$termite_config
-  echo "backup saved as ~/.dotfiles_backup/$now/$termite_config"
-fi
-unlink ~/$termite_config > /dev/null 2>&1
-mkdir -p ~/.config/termite
-ln -s ~/.dotfiles/files/$termite_config ~/$termite_config
-echo "Link created: ~/$termite_config"

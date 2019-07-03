@@ -2,13 +2,9 @@
 
 export root_files=(
     ".aliases"
-    ".config/termite/config"
     ".gitconfig"
     ".gitignore"
     ".tmux.conf"
     ".vimrc"
-    ".Xresources"
     ".zshrc"
 )
-
-export root_directories=()
