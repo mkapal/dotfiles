@@ -45,8 +45,8 @@ setopt share_history          # share command history data
 bindkey -v
 
 # History search based on prompt input
-bindkey ${terminfo[kcuu1]} history-substring-search-up
-bindkey ${terminfo[kcud1]} history-substring-search-down
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
