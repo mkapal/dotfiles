@@ -81,17 +81,17 @@ Plug 'itchyny/lightline.vim'
     return join(ret, ' ')
   endfunction
 " }}}
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 " {{{
-  let g:indent_guides_default_mapping = 0
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_start_level = 2
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_exclude_filetypes = ['help', 'startify', 'man', 'rogue']
-  let g:indent_guides_auto_colors = 0
+  " let g:indent_guides_default_mapping = 0
+  " let g:indent_guides_enable_on_vim_startup = 1
+  " let g:indent_guides_start_level = 2
+  " let g:indent_guides_guide_size = 1
+  " let g:indent_guides_exclude_filetypes = ['help', 'startify', 'man', 'rogue']
+  " let g:indent_guides_auto_colors = 0
 
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#2D2D2D
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2D2D2D
+  " autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#2D2D2D
+  " autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2D2D2D
 " }}}
 " }}}
 " Layout {{{
@@ -185,7 +185,7 @@ Plug 'mileszs/ack.vim'
 " }}}
 " }}}
 " Folding {{{
-set foldmethod=indent   " fold based on indent level
+set foldmethod=marker   " fold based on markers
 set foldnestmax=10      " max 10 depth
 set foldenable          " don't fold files by default on open
 set foldlevelstart=10   " start with fold level of 1
