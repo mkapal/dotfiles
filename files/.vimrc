@@ -168,7 +168,7 @@ Plug 'scrooloose/nerdtree'
 " }}}
 Plug 'kien/ctrlp.vim'
 " {{{
-  nnoremap <silent> <leader>e :CtrlPMRU<CR>
+  nnoremap <silent> <leader>e :CtrlPBuffer<CR>
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 " }}}
 Plug 'christoomey/vim-tmux-navigator'

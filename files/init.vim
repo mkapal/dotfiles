@@ -27,32 +27,19 @@ if (has("termguicolors"))
 set termguicolors
 endif
 Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
 " {{{
   set laststatus=2
 
-  let g:lightline = {}
-
-  let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-
-  let g:lightline.active = {
-      \  'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'gitgutter', 'readonly', 'filename' ] ],
-      \  'right': [ [ 'lineinfo' ],
-      \             [ 'percent' ],
-      \             [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ], 
-      \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ]
-      \ }
-
-  let g:lightline.component_function = {
-      \ 'filename': 'LightlineFilename',
-      \ 'fugitive': 'LightLineFugitive',
-      \ 'gitgutter': 'LightLineGitGutter'
+  let g:lightline = {
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'fugitive', 'gitgutter', 'readonly', 'filename' ] ],
+        \ },
+        \ 'component_function': {
+        \   'filename': 'LightlineFilename',
+        \   'fugitive': 'LightLineFugitive',
+        \   'gitgutter': 'LightLineGitGutter'
+        \ }
       \ }
 
   function! LightlineFilename()
@@ -85,18 +72,6 @@ Plug 'maximbaz/lightline-ale'
     endfor
     return join(ret, ' ')
   endfunction
-" }}}
-Plug 'nathanaelkane/vim-indent-guides'
-" {{{
-  let g:indent_guides_default_mapping = 0
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_start_level = 2
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_exclude_filetypes = ['help', 'startify', 'man', 'rogue']
-  let g:indent_guides_auto_colors = 0
-
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#2D2D2D
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2D2D2D
 " }}}
 " }}}
 " Layout {{{
@@ -178,13 +153,24 @@ Plug 'junegunn/fzf.vim'
   command! -bang -nargs=? -complete=dir HFiles
   \ call fzf#vim#files(<q-args>, {'source': $FZF_DEFAULT_COMMAND}, <bang>0)
 
-  nnoremap <silent> <C-t> :HFiles<CR>
-  nnoremap <silent> <leader>e :Buffers<CR>
+  nnoremap <silent> <C-p> :HFiles<CR>
+  nnoremap <silent> <C-o> :Buffers<CR>
 " }}}
 Plug 'christoomey/vim-tmux-navigator'
 " }}}
+" Search {{{
+set path+=**     " Allow searching in all subdirectories of the current tree
+set ignorecase   " Ignore case when searching...
+set smartcase    " ...unless we type a capital
+Plug 'mileszs/ack.vim'
+" {{{
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+  endif
+" }}}
+" }}}
 " Folding {{{
-set foldmethod=indent   " fold based on indent level
+set foldmethod=marker   " fold based on markers
 set foldnestmax=10      " max 10 depth
 set foldenable          " don't fold files by default on open
 set foldlevelstart=10   " start with fold level of 1
@@ -214,11 +200,10 @@ Plug 'tpope/vim-fugitive'
 " }}}
 " }}}
 " Languages {{{
-Plug 'HerringtonDarkholme/yats.vim'
-"Plug 'Quramy/tsuquyomi'
-"Plug 'leafgarland/typescript-vim'
-"Plug 'ianks/vim-tsx'
-"{{{
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
+" {{{
   " let g:used_javascript_libs='react'
 " }}}
 " Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --tern-completer' }
@@ -238,16 +223,10 @@ Plug 'HerringtonDarkholme/yats.vim'
 "   let g:ycm_key_invoke_completion = '<C-@>'
 "   let g:ycm_autoclose_preview_window_after_insertion = 1
 " " }}}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"{{{
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#auto_complete_start_length = 1
-"}}}
 Plug 'w0rp/ale'
 " {{{
   let g:ale_fixers = {
   \   'javascript': ['prettier'],
-  \   'typescript': ['prettier'],
   \}
   let g:ale_fix_on_save = 1
 " }}}
