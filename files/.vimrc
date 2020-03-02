@@ -8,6 +8,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " General {{{
+scriptencoding utf-8
+set encoding=utf-8
 set nocompatible
 set hidden
 set updatetime=100
