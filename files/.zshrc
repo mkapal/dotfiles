@@ -1,7 +1,12 @@
 export TERM="xterm-256color"
 
+if [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]
+then 
+   ZSH_TMUX_AUTOSTART=true
+fi
+
 # Load tmux by default
-if [ "$TMUX" = "" ] && [ "$ZSH_TMUX_AUTOSTART" != false ]; then
+if [ "$TMUX" = "" ] && [ "$ZSH_TMUX_AUTOSTART" = true ]; then
     tmux attach || tmux new;
 fi
 
