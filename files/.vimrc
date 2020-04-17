@@ -101,6 +101,9 @@ set showcmd          " Show commands at the bottom as you type them
 set noshowmode
 set noruler
 set cursorline       " highlight current line
+set wrap
+set linebreak
+set showbreak=
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -215,6 +218,15 @@ Plug 'tpope/vim-fugitive'
 " }}}
 " }}}
 " Languages {{{
+Plug 'lervag/vimtex'
+" {{{
+  let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-shell-escape',
+    \ ],
+    \}
+  let g:vimtex_view_method = 'zathura'
+" }}}
 Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
