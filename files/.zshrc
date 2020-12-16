@@ -10,6 +10,9 @@ if [ "$TMUX" = "" ] && [ "$ZSH_TMUX_AUTOSTART" = true ]; then
     tmux attach || tmux new;
 fi
 
+export JAVA_HOME=`/usr/libexec/java_home`
+export ANDROID_SDK_ROOT=/Users/kapal/Library/Android/sdk
+
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
@@ -79,7 +82,7 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-export PATH="$(yarn global bin):$PATH"
+export PATH="$(yarn global bin):${ANDROID_SDK_ROOT}/emulator:$PATH"
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
