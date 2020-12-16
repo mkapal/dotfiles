@@ -20,7 +20,7 @@ let mapleader=";"
 map <Leader>vr :so ~/.config/nvim/init.vim<CR>
 " }}}
 " Colors {{{
-Plug 'morhetz/gruvbox'
+Plug 'blueshirts/darcula'
 set background=dark
 syntax enable
 if (has("termguicolors"))
@@ -201,7 +201,7 @@ Plug 'tpope/vim-fugitive'
 " }}}
 " Languages {{{
 Plug 'Quramy/tsuquyomi'
-Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'ianks/vim-tsx'
 " {{{
   " let g:used_javascript_libs='react'
@@ -234,6 +234,6 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
-colorscheme gruvbox
+colorscheme darcula
 
 " vim:foldmethod=marker:foldlevel=0
