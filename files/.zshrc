@@ -1,6 +1,6 @@
 export TERM="xterm-256color"
 
-if [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]
+if [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ] && [ "$TERMINAL_EMULATOR" != "VSCode" ]
 then 
    ZSH_TMUX_AUTOSTART=true
 fi
