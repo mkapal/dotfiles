@@ -8,7 +8,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " General {{{
-set nocompatible
 set hidden
 set updatetime=100
 set timeoutlen=1000 ttimeoutlen=0 " Eliminate delays after exiting normal mode
@@ -20,11 +19,15 @@ let mapleader=";"
 map <Leader>vr :so ~/.config/nvim/init.vim<CR>
 " }}}
 " Colors {{{
-Plug 'blueshirts/darcula'
+" Plug 'mhartington/oceanic-next'
+" Plug 'doums/darcula'
+" Plug 'blueshirts/darcula'
+" Plug 'lifepillar/vim-solarized8'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 set background=dark
-syntax enable
 if (has("termguicolors"))
-set termguicolors
+  set termguicolors
 endif
 Plug 'itchyny/lightline.vim'
 " {{{
@@ -77,7 +80,6 @@ Plug 'itchyny/lightline.vim'
 " Layout {{{
 set number
 set relativenumber
-set showcmd          " Show commands at the bottom as you type them
 set noshowmode
 set noruler
 set cursorline       " highlight current line
@@ -87,13 +89,10 @@ set list listchars=tab:\ \ ,trail:·
 " }}}
 " Indentation {{{
 set expandtab
-set smarttab
 set smartindent
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-filetype plugin on
-filetype indent on
 " }}}
 " File Navigation {{{
 set splitbelow
@@ -198,31 +197,21 @@ Plug 'tpope/vim-fugitive'
 " {{{
   nnoremap <silent> <leader>d :Gvdiff<CR>
 " }}}
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " }}}
 " Languages {{{
-Plug 'Quramy/tsuquyomi'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" {{{
+let g:coc_global_extensions = ['coc-tsserver']
+" }}}
+" Plug 'sheerun/vim-polyglot'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'ianks/vim-tsx'
+" Plug 'ianks/vim-tsx'
 " {{{
   " let g:used_javascript_libs='react'
 " }}}
-" Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --tern-completer' }
-" {{{
-"  if !exists('g:ycm_semantic_triggers')
-"    let g:ycm_semantic_triggers = {}
-"  endif
-"   let g:ycm_semantic_triggers['typescript'] = ['.']
-"   let g:ycm_semantic_triggers['typescript.tsx'] = ['.']
-
-"   " Go to definition of the symbol under cursor
-"   nnoremap <leader>jd :YcmCompleter GoTo<CR>
-
-"   " Rename symbol under cursor
-"   nnoremap <expr> <leader>rr ':YcmCompleter RefactorRename ' . expand('<cword>')
-
-"   let g:ycm_key_invoke_completion = '<C-@>'
-"   let g:ycm_autoclose_preview_window_after_insertion = 1
-" " }}}
 Plug 'w0rp/ale'
 " {{{
   let g:ale_fixers = {
@@ -234,6 +223,6 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
-colorscheme darcula
+colorscheme gruvbox
 
 " vim:foldmethod=marker:foldlevel=0
