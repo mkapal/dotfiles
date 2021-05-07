@@ -1,4 +1,4 @@
-export TERM="xterm-256color"
+# [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
 if [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ] && [ "$TERMINAL_EMULATOR" != "VSCode" ]
 then 
@@ -9,9 +9,6 @@ fi
 if [ "$TMUX" = "" ] && [ "$ZSH_TMUX_AUTOSTART" = true ]; then
     tmux attach || tmux new;
 fi
-
-export JAVA_HOME=`/usr/libexec/java_home`
-export ANDROID_SDK_ROOT=/Users/kapal/Library/Android/sdk
 
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
@@ -34,6 +31,10 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen apply
+
+# Pure prompt
+autoload -U promptinit; promptinit
+prompt pure
 
 # History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"

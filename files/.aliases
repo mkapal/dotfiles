@@ -22,19 +22,20 @@ alias gp='git push'
 alias gs='tig status'
 
 # Docker
-alias dcu='docker-compose up -d'
-alias dcub='docker-compose up -d --build'
-alias dcd='docker-compose down'
-alias dca='docker ps -a'
-alias drmex='docker rm $(docker ps -q -f status=exited)'
-alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
-alias dsex="docker start $(docker ps -a --filter 'status=exited' -q)"
+# alias dcu='docker-compose up -d'
+# alias dcub='docker-compose up -d --build'
+# alias dcd='docker-compose down'
+# alias dca='docker ps -a'
+# alias drmex='docker rm $(docker ps -q -f status=exited)'
+# alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
+# alias dsex="docker start $(docker ps -a --filter 'status=exited' -q)"
 
 # Yarn
 alias ya='yarn add'
 alias yad='yarn add -D'
 alias yr='yarn remove'
 alias yga='yarn global add'
+alias yarr=yarn
 
 alias zshrc='vim ~/.zshrc'
 

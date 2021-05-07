@@ -18,6 +18,10 @@ set history=1000
 set lazyredraw
 set scrolloff=3
 
+" Check file changes on focus
+" au FocusGained,BufEnter * :checktime
+Plug 'djoshea/vim-autoread'
+
 " Map escape sequences to Alt combinations
 let c='a'
 while c <= 'z'
@@ -31,11 +35,10 @@ map <Leader>vr :so ~/.vimrc<CR>
 " }}}
 " Colors {{{
 Plug 'morhetz/gruvbox'
+Plug 'doums/darcula'
 set background=dark
 syntax enable
-if (has("termguicolors"))
 set termguicolors
-endif
 Plug 'itchyny/lightline.vim'
 " {{{
   set laststatus=2
@@ -171,10 +174,15 @@ Plug 'scrooloose/nerdtree'
   " Automatically close NERDTree when it's the last window open
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " }}}
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " {{{
-  nnoremap <silent> <leader>e :CtrlPBuffer<CR>
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  " Fuzzy search all files including hidden and ignore files
+  command! -bang -nargs=? -complete=dir HFiles
+  \ call fzf#vim#files(<q-args>, {'source': $FZF_DEFAULT_COMMAND}, <bang>0)
+
+  nnoremap <silent> <C-p> :HFiles<CR>
+  nnoremap <silent> <C-o> :Buffers<CR>
 " }}}
 Plug 'christoomey/vim-tmux-navigator'
 " }}}
@@ -204,12 +212,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 " {{{
 " Move selection up/down
-  nnoremap <A-j> :m .+1<CR>==
-  nnoremap <A-k> :m .-2<CR>==
-  inoremap <A-j> <Esc>:m .+1<CR>==gi
-  inoremap <A-k> <Esc>:m .-2<CR>==gi
-  vnoremap <A-j> :m '>+1<CR>gv=gv
-  vnoremap <A-k> :m '<-2<CR>gv=gv
+  nnoremap <leader>j :m .+1<CR>==
+  nnoremap <leader>k :m .-2<CR>==
+  vnoremap <leader>j :m '>+1<CR>gv=gv
+  vnoremap <leader>k :m '<-2<CR>gv=gv
 " }}}
 " }}}
 " Git integration {{{
@@ -218,40 +224,41 @@ Plug 'tpope/vim-fugitive'
 " {{{
   nnoremap <silent> <leader>d :Gvdiff<CR>
 " }}}
-" }}}
+Plug 'Xuyuanp/nerdtree-git-plugin'
+"" }}}
 " Languages {{{
-Plug 'lervag/vimtex'
+" fix syntax highlighting
+syntax sync fromstart
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " {{{
-  let g:vimtex_compiler_latexmk = {
-    \ 'options' : [
-    \   '-shell-escape',
-    \ ],
-    \}
-  let g:vimtex_view_method = 'zathura'
-" }}}
-Plug 'Quramy/tsuquyomi'
+  let g:coc_global_extensions = ['coc-tsserver']
+  nnoremap <silent> K :call CocAction('doHover')<CR>
+  nmap <leader>do <Plug>(coc-codeaction)
+" map 1-9 to nth item
+for s:i in range(1, 9)
+  exe printf('inoremap <expr> %d pumvisible() ? <sid>select_pum(%d) : %d ', s:i, s:i, s:i)
+endfor
+
+function! s:select_pum(index)
+  let compInfo = complete_info()
+  let idx = a:index == 0 ? 10 : a:index - 1
+  let d = idx - compInfo.selected
+  return repeat( d > 0 ? "\<c-n>" : "\<c-p>", abs(d)) . "\<C-y>"
+endfunction
+
+  if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+    let g:coc_global_extensions += ['coc-prettier']
+  endif
+
+  if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+    let g:coc_global_extensions += ['coc-eslint']
+  endif
+"}}}
+Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
-" {{{
-  " let g:used_javascript_libs='react'
-" }}}
-" Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --tern-completer' }
-" {{{
-"  if !exists('g:ycm_semantic_triggers')
-"    let g:ycm_semantic_triggers = {}
-"  endif
-"   let g:ycm_semantic_triggers['typescript'] = ['.']
-"   let g:ycm_semantic_triggers['typescript.tsx'] = ['.']
-
-"   " Go to definition of the symbol under cursor
-"   nnoremap <leader>jd :YcmCompleter GoTo<CR>
-
-"   " Rename symbol under cursor
-"   nnoremap <expr> <leader>rr ':YcmCompleter RefactorRename ' . expand('<cword>')
-
-"   let g:ycm_key_invoke_completion = '<C-@>'
-"   let g:ycm_autoclose_preview_window_after_insertion = 1
-" " }}}
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'w0rp/ale'
 " {{{
   let g:ale_fixers = {
@@ -263,6 +270,6 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
-colorscheme gruvbox
+colorscheme darcula
 
 " vim:foldmethod=marker:foldlevel=0

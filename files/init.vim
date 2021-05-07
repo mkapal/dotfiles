@@ -17,14 +17,13 @@ set scrolloff=3
 
 let mapleader=";"
 map <Leader>vr :so ~/.config/nvim/init.vim<CR>
+
+" Check file changes on focus
+Plug 'djoshea/vim-autoread'
 " }}}
 " Colors {{{
-" Plug 'mhartington/oceanic-next'
-" Plug 'doums/darcula'
-" Plug 'blueshirts/darcula'
-" Plug 'lifepillar/vim-solarized8'
-" Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
+Plug 'doums/darcula'
 set background=dark
 if (has("termguicolors"))
   set termguicolors
@@ -112,10 +111,9 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap j gj
 nnoremap k gk
 
-nnoremap gf :vertical wincmd f<CR>        " Open file under cursor in a new vertical split
+nnoremap gf :vertical wincmd f<CR>  " Open file under cursor in a new vertical split
 
 " Buffers
-" nnoremap <silent>   <C-e> :Buffers<CR>
 nnoremap <silent> <S-Tab> :bprevious<CR>
 nnoremap <silent>   <Tab> :bnext<CR>
 
@@ -152,8 +150,14 @@ Plug 'junegunn/fzf.vim'
   command! -bang -nargs=? -complete=dir HFiles
   \ call fzf#vim#files(<q-args>, {'source': $FZF_DEFAULT_COMMAND}, <bang>0)
 
-  nnoremap <silent> <C-p> :HFiles<CR>
-  nnoremap <silent> <C-o> :Buffers<CR>
+  " TODO
+  " Default options are --nogroup --column --color
+  " let s:ag_options = ' --one-device --skip-vcs-ignores --smart-case '
+  " command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--hidden --ignore .git -l', <bang>0)
+
+  nnoremap <silent> <C-p> :GFiles<CR>
+  nnoremap <silent> <C-e> :Buffers<CR>
+  nnoremap <silent> <C-f> :Ag<CR>
 " }}}
 Plug 'christoomey/vim-tmux-navigator'
 " }}}
@@ -183,12 +187,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 " {{{
 " Move selection up/down
-  nnoremap <A-j> :m .+1<CR>==
-  nnoremap <A-k> :m .-2<CR>==
-  inoremap <A-j> <Esc>:m .+1<CR>==gi
-  inoremap <A-k> <Esc>:m .-2<CR>==gi
-  vnoremap <A-j> :m '>+1<CR>gv=gv
-  vnoremap <A-k> :m '<-2<CR>gv=gv
+  nnoremap <leader>j :m .+1<CR>==
+  nnoremap <leader>k :m .-2<CR>==
+  vnoremap <leader>j :m '>+1<CR>gv=gv
+  vnoremap <leader>k :m '<-2<CR>gv=gv
 " }}}
 " }}}
 " Git integration {{{
@@ -202,16 +204,31 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Languages {{{
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " {{{
-let g:coc_global_extensions = ['coc-tsserver']
+  let g:coc_global_extensions = ['coc-tsserver']
+  nnoremap <silent> K :call CocAction('doHover')<CR>
+  nmap <leader>do <Plug>(coc-codeaction)
+
+  " map 1-9 to nth item
+  for s:i in range(1, 9)
+    exe printf('inoremap <expr> %d pumvisible() ? <sid>select_pum(%d) : %d ', s:i, s:i, s:i)
+  endfor
+
+  function! s:select_pum(index)
+    let compInfo = complete_info()
+    let idx = a:index == 0 ? 10 : a:index - 1
+    let d = idx - compInfo.selected
+    return repeat( d > 0 ? "\<c-n>" : "\<c-p>", abs(d)) . "\<C-y>"
+  endfunction
+
+    if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+      let g:coc_global_extensions += ['coc-prettier']
+    endif
+
+    if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+      let g:coc_global_extensions += ['coc-eslint']
+    endif
 " }}}
-" Plug 'sheerun/vim-polyglot'
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'ianks/vim-tsx'
-" {{{
-  " let g:used_javascript_libs='react'
-" }}}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'w0rp/ale'
 " {{{
   let g:ale_fixers = {
@@ -223,6 +240,18 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
-colorscheme gruvbox
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+    },
+    incremental_selection = {
+        enable = false,
+    },
+    ensure_installed = {'javascript'}
+}
+EOF
+
+colorscheme darcula
 
 " vim:foldmethod=marker:foldlevel=0
