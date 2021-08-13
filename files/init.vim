@@ -199,6 +199,11 @@ Plug 'tpope/vim-fugitive'
 " {{{
   nnoremap <silent> <leader>d :Gvdiff<CR>
 " }}}
+Plug 'idanarye/vim-merginal'
+" {{{
+  let g:merginal_windowWidth = 80
+  nnoremap <silent> <leader>b :Merginal<CR>
+" }}}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " }}}
 " Languages {{{
@@ -207,6 +212,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = ['coc-tsserver']
   nnoremap <silent> K :call CocAction('doHover')<CR>
   nmap <leader>do <Plug>(coc-codeaction)
+  nmap <leader>gd <Plug>(coc-definition)
+  nmap <leader>rn <Plug>(coc-rename)
 
   " map 1-9 to nth item
   for s:i in range(1, 9)
