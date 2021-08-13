@@ -6,3 +6,7 @@ editor = vim
 [user]
 name = Martin Kapal
 email = flamecze@gmail.com
+[pull]
+	rebase = true
+[push]
+	default = current
