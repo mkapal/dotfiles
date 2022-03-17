@@ -2,7 +2,7 @@
 
 if [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ] && [ "$TERMINAL_EMULATOR" != "VSCode" ]
 then 
-   ZSH_TMUX_AUTOSTART=true
+   # ZSH_TMUX_AUTOSTART=true
 fi
 
 # Load tmux by default
