@@ -1,3 +1,0 @@
-[submodule "files/antigen"]
-	path = files/antigen
-	url = https://github.com/zsh-users/antigen
