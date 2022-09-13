@@ -24,10 +24,10 @@ alias gs='tig status'
 alias grh='git reset HEAD~'
 
 # Docker
-# alias dcu='docker-compose up -d'
-# alias dcub='docker-compose up -d --build'
-# alias dcd='docker-compose down'
-# alias dca='docker ps -a'
+alias dcu='docker-compose up -d'
+alias dcub='docker-compose up -d --build'
+alias dcd='docker-compose down'
+alias dca='docker ps -a'
 # alias drmex='docker rm $(docker ps -q -f status=exited)'
 # alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
 # alias dsex="docker start $(docker ps -a --filter 'status=exited' -q)"
@@ -42,10 +42,8 @@ alias yarr=yarn
 alias zshrc='vim ~/.zshrc'
 
 update() {
-    sudo apt update
-    apt list --upgradable
-    sudo apt upgrade
-    sudo apt autoremove
+    brew update
+    brew upgrade
     vim +PlugUpgrade +PlugUpdate +PlugClean +qall
     antigen update
     ~/.tmux/plugins/tpm/bin/update_plugins all

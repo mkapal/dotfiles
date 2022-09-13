@@ -1,18 +1,16 @@
-# Linux dotfiles
+# Dotfiles
 
 My dotfiles.
 
-## Setup
+## Installation
 
-```bash
-curl -#LS https://raw.githubusercontent.com/flamecze/dotfiles/master/bootstrap.sh | bash
+```sh
+homesick clone mkapal/dotfiles
+homesick link dotfiles
 ```
 
-## Restore (WIP)
+## Uninstallation
 
-Run `./restore` to remove the symbolic links and replace them with real dotfiles from the repo.
-
-## Additional installed packages
-
-- GTK theme & GNOME Shell: Vimix Dark Laptop Ruby https://github.com/vinceliuice/vimix-gtk-themes
-- Icons: Papirus https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+```sh
+homesick unlink dotfiles
+```

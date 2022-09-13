@@ -1,7 +1,7 @@
 .DS_Store
 
 # Vim-plug
-files/.vim/plugged/
+home/.vim/plugged/
 
 # Swap
 [._]*.s[a-v][a-z]

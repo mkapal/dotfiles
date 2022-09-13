@@ -1,15 +1,3 @@
-# [[ $TMUX = "" ]] && export TERM="xterm-256color"
-
-if [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ] && [ "$TERMINAL_EMULATOR" != "VSCode" ]
-then 
-   # ZSH_TMUX_AUTOSTART=true
-fi
-
-# Load tmux by default
-if [ "$TMUX" = "" ] && [ "$ZSH_TMUX_AUTOSTART" = true ]; then
-    tmux attach || tmux new;
-fi
-
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
@@ -26,7 +14,7 @@ fi
 eval $(thefuck --alias)
 
 # Antigen plugins
-source ~/.dotfiles/files/antigen/antigen.zsh
+source ~/.homesick/home/antigen/antigen.zsh
 antigen bundle mafredri/zsh-async
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
