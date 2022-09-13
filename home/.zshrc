@@ -14,7 +14,7 @@ fi
 eval $(thefuck --alias)
 
 # Antigen plugins
-source ~/.homesick/home/antigen/antigen.zsh
+source /usr/local/share/antigen/antigen.zsh
 antigen bundle mafredri/zsh-async
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
