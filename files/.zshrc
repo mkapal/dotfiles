@@ -23,12 +23,11 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
+eval $(thefuck --alias)
+
 # Antigen plugins
 source ~/.dotfiles/files/antigen/antigen.zsh
-export NVM_AUTO_USE=true
-antigen bundle lukechilds/zsh-nvm
 antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
@@ -64,5 +63,7 @@ export PATH="$(yarn global bin):${ANDROID_SDK_ROOT}/emulator:$PATH"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# FNM
+eval "$(fnm env --use-on-cd)"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
