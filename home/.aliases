@@ -39,6 +39,9 @@ alias yr='yarn remove'
 alias yga='yarn global add'
 alias yarr=yarn
 
+# Yalc
+alias ylcp='yalc publish && yalc push'
+
 alias zshrc='vim ~/.zshrc'
 
 update() {
@@ -46,7 +49,6 @@ update() {
     brew upgrade
     vim +PlugUpgrade +PlugUpdate +PlugClean +qall
     antigen update
-    ~/.tmux/plugins/tpm/bin/update_plugins all
 }
 
 mkcd () {

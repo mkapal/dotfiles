@@ -4,3 +4,5 @@
 .history
 .yalc
 yalc.lock
+.fleet
+.vscode

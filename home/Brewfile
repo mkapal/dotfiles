@@ -1,0 +1,34 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "homebrew/services"
+brew "antigen"
+brew "fnm"
+brew "gh"
+brew "make"
+brew "mas"
+brew "neovim"
+brew "pure"
+brew "python@3.10"
+brew "python@3.11"
+brew "redis"
+brew "thefuck"
+brew "tig"
+cask "firefox"
+cask "notion"
+cask "postman"
+cask "spotify"
+cask "sublime-text"
+cask "visual-studio-code"
+cask "vlc"
+cask "warp"
+cask "xquartz"
+mas "Color Picker", id: 1545870783
+mas "Ethernet Status", id: 1186187538
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Pixea", id: 1507782672
+mas "Remote Mouse", id: 403195710
+mas "Slack", id: 803453959
+mas "SonicWall Mobile Connect", id: 822514576
+mas "Things", id: 904280696
+mas "Xcode", id: 497799835
