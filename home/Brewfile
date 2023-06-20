@@ -19,10 +19,12 @@ brew "redis"
 brew "thefuck"
 brew "tig"
 brew "tldr"
+brew "yarn"
 brew "kdabir/tap/has"
 cask "firefox"
 cask "font-ibm-plex-mono"
 cask "google-chrome"
+cask "jetbrains-toolbox"
 cask "notion"
 cask "postman"
 cask "spotify"
@@ -31,10 +33,8 @@ cask "visual-studio-code"
 cask "vlc"
 cask "warp"
 cask "xquartz"
-mas "Color Picker", id: 1545870783
 mas "Ethernet Status", id: 1186187538
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "Pixea", id: 1507782672
 mas "Remote Mouse", id: 403195710
 mas "SonicWall Mobile Connect", id: 822514576
 mas "Things", id: 904280696

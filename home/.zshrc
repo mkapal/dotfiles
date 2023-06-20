@@ -14,7 +14,7 @@ fi
 eval $(thefuck --alias)
 
 # Antigen plugins
-source /usr/local/share/antigen/antigen.zsh
+source /opt/homebrew/share/antigen/antigen.zsh
 antigen bundle mafredri/zsh-async
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
@@ -46,7 +46,7 @@ bindkey -v
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
-export PATH="$(yarn global bin):${ANDROID_SDK_ROOT}/emulator:$PATH"
+export PATH="$(yarn global bin):${ANDROID_SDK_ROOT}/emulator:/opt/homebrew/bin:$PATH"
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
