@@ -11,8 +11,6 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
-eval $(thefuck --alias)
-
 # Antigen plugins
 source /opt/homebrew/share/antigen/antigen.zsh
 antigen bundle mafredri/zsh-async
@@ -20,6 +18,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen apply
+
+fpath+=($HOME/.zsh/pure)
 
 # Pure prompt
 autoload -U promptinit; promptinit

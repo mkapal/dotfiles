@@ -25,6 +25,7 @@ cask "firefox"
 cask "font-ibm-plex-mono"
 cask "google-chrome"
 cask "jetbrains-toolbox"
+cask "microsoft-teams"
 cask "notion"
 cask "postman"
 cask "spotify"
@@ -33,6 +34,7 @@ cask "visual-studio-code"
 cask "vlc"
 cask "warp"
 cask "xquartz"
+cask "zed"
 mas "Ethernet Status", id: 1186187538
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Remote Mouse", id: 403195710
