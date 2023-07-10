@@ -12,6 +12,7 @@ brew "make"
 brew "mas"
 brew "neovim"
 brew "node"
+brew "pnpm"
 brew "pure"
 brew "python@3.10"
 brew "python@3.11"
@@ -19,6 +20,7 @@ brew "redis"
 brew "thefuck"
 brew "tig"
 brew "tldr"
+brew "wget"
 brew "yarn"
 brew "kdabir/tap/has"
 cask "firefox"
@@ -28,6 +30,7 @@ cask "jetbrains-toolbox"
 cask "microsoft-teams"
 cask "notion"
 cask "postman"
+cask "rectangle"
 cask "spotify"
 cask "sublime-text"
 cask "visual-studio-code"
@@ -36,7 +39,7 @@ cask "warp"
 cask "xquartz"
 cask "zed"
 mas "Ethernet Status", id: 1186187538
-mas "Microsoft Remote Desktop", id: 1295203466
+mas "Hand Mirror", id: 1502839586
 mas "Remote Mouse", id: 403195710
 mas "SonicWall Mobile Connect", id: 822514576
 mas "Things", id: 904280696

@@ -12,7 +12,7 @@
   "telemetry": {
     "metrics": false
   },
-  "buffer_font_size": 16,
+  "buffer_font_size": 15,
   "buffer_font_family": "IBM Plex Mono",
   "formatter": {
     "external": {
