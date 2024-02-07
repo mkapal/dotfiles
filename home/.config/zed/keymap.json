@@ -1,0 +1,8 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-3": "workspace::NewTerminal"
+    }
+  }
+]
