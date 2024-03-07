@@ -1,0 +1,21 @@
+name: hakkastack
+root: ~/projects/work/hakkastack
+
+windows:
+  - frontend:
+      layout: even-vertical
+      panes:
+        - yarn frontend start
+        -
+  - backend:
+      root: ~/projects/work/hakkastack/backend
+      layout: even-vertical
+      panes:
+        - docker compose up
+  - remote:
+      layout: tiled
+      panes:
+        - ssh hakka-dev
+        - ssh hakka-prod
+        - ssh hakka-build
+        -

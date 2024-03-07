@@ -1,0 +1,9 @@
+name: morpho
+root: ~/projects/work/morpho
+
+windows:
+  - morpho:
+      layout: main-vertical
+      panes:
+        - yarn morpho-docs:serve
+        - 
