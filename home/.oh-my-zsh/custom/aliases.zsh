@@ -34,9 +34,7 @@ alias dcu='docker compose up -d'
 alias dcub='docker compose up -d --build'
 alias dcd='docker compose down'
 alias dca='docker ps -a'
-# alias drmex='docker rm $(docker ps -q -f status=exited)'
-# alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
-# alias dsex="docker start $(docker ps -a --filter 'status=exited' -q)"
+alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
 
 # Yarn
 alias ya='yarn add'
@@ -54,7 +52,11 @@ alias ylcp='yalc publish && yalc push'
 # pnpm
 alias pi='pnpm i'
 
+# ZSH
 alias zshrc='vim ~/.zshrc'
+
+# Tmuxinator
+alias tx=tmuxinator
 
 update() {
     brew update
@@ -62,6 +64,9 @@ update() {
     vim +PlugUpgrade +PlugUpdate +PlugClean +qall
     antigen update
 }
+
+# Homebrew bundle
+alias brewfile='brew bundle dump --file=~/Brewfile --force'
 
 mkcd () {
   mkdir "$1"

@@ -34,7 +34,7 @@ let mapleader=";"
 map <Leader>vr :so ~/.vimrc<CR>
 " }}}
 " Colors {{{
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 Plug 'doums/darcula'
 set background=dark
 syntax enable
@@ -229,7 +229,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Languages {{{
 " fix syntax highlighting
 syntax sync fromstart
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " {{{
   let g:coc_global_extensions = ['coc-tsserver']
   nnoremap <silent> K :call CocAction('doHover')<CR>
