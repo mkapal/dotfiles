@@ -5,7 +5,7 @@ editor = nvim
 
 [user]
 name = Martin Kapal
-email = flamecze@gmail.com
+email = makap@ciklum.com
 [pull]
 	rebase = true
 [push]
